@@ -54,8 +54,15 @@ jobs:
     - dist: focal
       arch: amd64
       stage: test
+      install: skip
       name: "CRIv1alpha2 test"
-      script: ./travis_ci.sh criv1alpha2test
+      script:
+        - sudo apt-get install -y net-tools libbtrfs-dev 
+        - sudo mkdir -p /etc/systemd/system/docker.service.d
+        - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
+        - sudo systemctl daemon-reload
+        - sudo systemctl restart docker
+        - ./travis_ci.sh criv1alpha2test
     - dist: focal
       virt: vm
       group: edge
