@@ -66,6 +66,7 @@ jobs:
       name: "Node e2e test"
       install: skip
       script:
+        - sudo apt-get install -y net-tools libbtrfs-dev 
         - sudo mkdir -p /etc/systemd/system/docker.service.d
         - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
         - sudo systemctl daemon-reload
