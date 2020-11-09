@@ -76,6 +76,7 @@ jobs:
       script: 
         - sudo apt-get install -y net-tools libbtrfs-dev
         - ./hack/install/install_containerd.sh
+        - sudo mkdir -p /etc/systemd/system/docker.service.d
         - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
         - service docker status
         - sudo systemctl daemon-reload
