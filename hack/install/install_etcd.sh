@@ -26,7 +26,7 @@ etcd::check_version() {
 
 # etcd::install downloads the package and build.
 etcd::install() {
-  if [[ "${arch}" == "aarch64" ]]; then
+  if [[ "${ARCH}" == "aarch64" ]]; then
     arch1="arm64"
   else
     arch1="amd64"
