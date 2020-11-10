@@ -31,7 +31,7 @@ nsenter::check_version() {
 # nsenter::ubuntu::install_dependencies will use apt-get to install dependencies.
 nsenter::ubuntu::install_dependencies() {
   #apt-get install -y -q wget
-  apt-get install -y -q \
+  apt-get install -y \
     libncurses5-dev \	
     libslang2-dev \	
     gettext \	
