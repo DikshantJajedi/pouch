@@ -250,7 +250,7 @@ download-dependencies: package-dependencies ## install dumb-init, local-persist,
 	hack/install/install_ci_related.sh
 	hack/install/install_dumb_init.sh
 	hack/install/install_local_persist.sh
-	hack/install/install_nsenter.sh
+	#hack/install/install_nsenter.sh
 	#hack/install/install_criu.sh
 
 .PHONY: clean
