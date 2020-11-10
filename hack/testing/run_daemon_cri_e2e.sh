@@ -59,7 +59,7 @@ integration::run_daemon_cri_test_e2e_cases() {
   local cri_runtime code KUBERNETES_VERSION
   cri_runtime=$1
 
-  KUBERNETES_VERSION="v1.16.3"
+  KUBERNETES_VERSION="v1.18.10"
   KUBERNETES_REPO="github.com/kubernetes/kubernetes"
   KUBERNETES_PATH="${GOPATH}/src/k8s.io/kubernetes"
   if [[ ! -d "${KUBERNETES_PATH}" ]]; then
