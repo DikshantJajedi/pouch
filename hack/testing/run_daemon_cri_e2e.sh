@@ -74,7 +74,7 @@ integration::run_daemon_cri_test_e2e_cases() {
   echo "start pouch daemon cri-${cri_runtime} e2e test..."
   set +e
 
-  make test-e2e-node \
+  make --quiet test-e2e-node \
     RUNTIME=remote \
     CONTAINER_RUNTIME_ENDPOINT=unix://${POUCH_SOCK} \
     SKIP="${SKIP}" \
