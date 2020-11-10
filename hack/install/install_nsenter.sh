@@ -30,15 +30,47 @@ nsenter::check_version() {
 
 # nsenter::ubuntu::install_dependencies will use apt-get to install dependencies.
 nsenter::ubuntu::install_dependencies() {
-  apt-get install -y -q wget
+  #apt-get install -y -q wget
+  apt-get install -y -q \
+    libncurses5-dev \	
+    libslang2-dev \	
+    gettext \	
+    zlib1g-dev \	
+    libselinux1-dev \	
+    debhelper \	
+    lsb-release \	
+    pkg-config \	
+    po-debconf \	
+    autoconf \	
+    automake \	
+    autopoint \	
+    libtool
 }
 
 # nsenter::ubuntu::install will install nsenter.
 # TODO: change to get binary from aliyun oss storage.
 nsenter::ubuntu::install() {
-  wget "https://${OSS_BUCKET}.${OSS_ENDPOINT}/pouch-test/ubuntu/nsenter-2.24.1" \
-    -O /usr/local/bin/nsenter
-  chmod +x /usr/local/bin/nsenter
+  local url target tmpdir
+  #wget "https://${OSS_BUCKET}.${OSS_ENDPOINT}/pouch-test/ubuntu/nsenter-2.24.1" \
+  #  -O /usr/local/bin/nsenter
+  #chmod +x /usr/local/bin/nsenter
+  target="util-linux-${NSENTER_VERSION}.tar.gz"
+  url="https://www.kernel.org/pub/linux/utils/util-linux/v2.24"	
+  url="${url}/${target}"	
+
+  tmpdir="$(mktemp -d /tmp/nsenter-install-XXXXXX)"	
+  trap 'rm -rf /tmp/nsenter-install-*' EXIT	
+
+  wget --quiet "${url}" -P "${tmpdir}"	
+  tar xf "${tmpdir}/${target}" -C "${tmpdir}"	
+
+  cd "${tmpdir}/util-linux-${NSENTER_VERSION}"	
+  ./autogen.sh	
+  autoreconf -vfi	
+  ./configure	
+  make	
+
+  cp "${cmd}" /usr/local/bin
 }
 
 # nsenter::centos::install will install nsenter.
