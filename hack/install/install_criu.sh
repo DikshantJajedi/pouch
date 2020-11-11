@@ -29,7 +29,9 @@ criu::ubuntu::install() {
   git clone https://github.com/checkpoint-restore/criu.git "${tmpdir}/criu"
   cd "${tmpdir}/criu"
   git checkout "${tag}" -b "${tag}"
-  make -j4
+  echo ">>>> make running <<<<"
+  make
+  echo ">>>> make done <<<<"
   make install
 }
 
