@@ -34,7 +34,7 @@ critest::install() {
   local workdir pkg CRITOOLS_REPO
 
   pkg="github.com/kubernetes-sigs/cri-tools"
-  CRITOOLS_REPO="github.com/Abhisheknishant/cri-tools"
+  CRITOOLS_REPO="github.com/DikshantJajedi/cri-tools"
   workdir="${GOPATH}/src/${pkg}"
 
   if [ ! -d "${workdir}" ]; then
@@ -45,8 +45,11 @@ critest::install() {
 
   cd "${workdir}"
   git fetch --all
+  echo ">>>> checkout <<<<"
   git checkout "${CRITEST_BRANCH_DEFAULT}"
+  echo ">>>> make running <<<<"
   make
+  echo ">>>> make completed <<<<"
   cd -
 }
 
