@@ -57,7 +57,10 @@ jobs:
       install: skip
       name: "CRIv1alpha2 test"
       script:
-        - sudo apt-get install -y net-tools libbtrfs-dev 
+        - sudo apt-get install -y net-tools libbtrfs-dev
+        - sudo nsenter -V
+        - sudo whereis nsenter
+        - sudo cp /usr/bin/nsenter /usr/local/bin/nsenter
         - sudo mkdir -p /etc/systemd/system/docker.service.d
         - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
         - sudo systemctl daemon-reload
@@ -72,6 +75,9 @@ jobs:
       name: "CRIv1alpha2 test"
       script:
         - sudo apt-get install -y net-tools libbtrfs-dev 
+        - sudo nsenter -V
+        - sudo whereis nsenter
+        - sudo cp /usr/bin/nsenter /usr/local/bin/nsenter
         - sudo mkdir -p /etc/systemd/system/docker.service.d
         - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
         - sudo systemctl daemon-reload
