@@ -16,24 +16,21 @@ criu::ubuntu::install_dependencies() {
     python-protobuf \
     libnl-3-dev \
     libcap-dev \
+    xmlto \
     asciidoc
 }
 
 # criu::ubuntu::install will install criu from source.
 criu::ubuntu::install() {
   #apt-get install -y -q criu
-  local tag
+  local tmpdir tag
 
   tag="v3.15"
-  #tmpdir="$(mktemp -d /tmp/criu-build-XXXXXX)"
-  git clone https://github.com/checkpoint-restore/criu.git
-  echo ">>>> cd <<<<"
-  cd "criu/"
-  echo ">>>> checkout <<<<"
+  tmpdir="$(mktemp -d /tmp/criu-build-XXXXXX)"
+  git clone https://github.com/checkpoint-restore/criu.git "${tmpdir}/criu"
+  cd "${tmpdir}/criu"
   git checkout "${tag}" -b "${tag}"
-  echo ">>>> make running <<<<"
   make
-  echo ">>>> make done <<<<"
   make install
 }
 
