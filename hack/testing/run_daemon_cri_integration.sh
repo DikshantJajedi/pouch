@@ -90,7 +90,9 @@ integration::run_cri_test(){
 
   integration::install_critest
 
+  echo ">>>> cri completed <<<<"
   integration::stop_local_persist
+  echo ">>>> stop local <<<<"
   integration::run_local_persist_background "${local_persist_log}"
   integration::stop_pouchd
   integration::run_pouchd_background "${cmd}" "${flags}" "${pouchd_log}"
