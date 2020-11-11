@@ -72,6 +72,7 @@ jobs:
       name: "CRIv1alpha2 test"
       script:
         - sudo apt-get install -y net-tools libbtrfs-dev
+        - sudo apt-get install -y xmlto
         - sudo mkdir -p /etc/systemd/system/docker.service.d
         - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
         - sudo systemctl daemon-reload
