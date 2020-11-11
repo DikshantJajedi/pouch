@@ -37,6 +37,7 @@ trap 'rm -rf /tmp/integration-daemon-cri-testing-*' EXIT
 # integration::install_critest installs test case.
 integration::install_critest() {
   hack/install/install_critest.sh
+  echo "install critest.sh running"
 }
 
 # integration::install_cni installs cni plugins.
