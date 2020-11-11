@@ -51,8 +51,9 @@ nsenter::ubuntu::install_dependencies() {
 # TODO: change to get binary from aliyun oss storage.
 nsenter::ubuntu::install() {
   local url target tmpdir
-  wget "https://${OSS_BUCKET}.${OSS_ENDPOINT}/pouch-test/ubuntu/nsenter-2.24.1" \
-    -O /usr/local/bin/nsenter
+  #wget "https://${OSS_BUCKET}.${OSS_ENDPOINT}/pouch-test/ubuntu/nsenter-2.24.1" \
+  #  -O /usr/local/bin/nsenter
+  cp /usr/bin/nsenter /usr/local/bin/nsenter
   chmod +x /usr/local/bin/nsenter
   #target="util-linux-${NSENTER_VERSION}.tar.gz"
   #url="https://www.kernel.org/pub/linux/utils/util-linux/v2.24"	
