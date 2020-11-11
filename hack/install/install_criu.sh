@@ -22,13 +22,13 @@ criu::ubuntu::install_dependencies() {
 # criu::ubuntu::install will install criu from source.
 criu::ubuntu::install() {
   #apt-get install -y -q criu
-  local tmpdir tag
+  local tag
 
   tag="v3.15"
-  tmpdir="$(mktemp -d /tmp/criu-build-XXXXXX)"
-  git clone https://github.com/checkpoint-restore/criu.git "${tmpdir}/criu"
+  #tmpdir="$(mktemp -d /tmp/criu-build-XXXXXX)"
+  git clone https://github.com/checkpoint-restore/criu.git
   echo ">>>> cd <<<<"
-  cd "${tmpdir}/criu"
+  cd "criu/"
   echo ">>>> checkout <<<<"
   git checkout "${tag}" -b "${tag}"
   echo ">>>> make running <<<<"
