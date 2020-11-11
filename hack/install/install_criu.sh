@@ -24,7 +24,7 @@ criu::ubuntu::install() {
   #apt-get install -y -q criu
   local tmpdir tag
 
-  tag="v3.10"
+  tag="v3.15"
   tmpdir="$(mktemp -d /tmp/criu-build-XXXXXX)"
 
   #git clone https://github.com/protocolbuffers/protobuf
