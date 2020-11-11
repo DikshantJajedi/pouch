@@ -27,7 +27,9 @@ criu::ubuntu::install() {
   tag="v3.15"
   tmpdir="$(mktemp -d /tmp/criu-build-XXXXXX)"
   git clone https://github.com/checkpoint-restore/criu.git "${tmpdir}/criu"
+  echo ">>>> cd <<<<"
   cd "${tmpdir}/criu"
+  echo ">>>> checkout <<<<"
   git checkout "${tag}" -b "${tag}"
   echo ">>>> make running <<<<"
   make
