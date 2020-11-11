@@ -82,7 +82,8 @@ main() {
   echo ">>>> install done <<<<"
 
   #command -v critest > /dev/null
-  command -v critest
+  critest -version
+  command -version critest
   echo ">>>> command checked <<<<"
 }
 
