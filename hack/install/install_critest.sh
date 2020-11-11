@@ -51,6 +51,7 @@ critest::install() {
   make
   echo ">>>> make completed <<<<"
   cd -
+  echo ">>>> DONEEEEEEEEEE <<<<"
 }
 
 # critest::install_ginkgo installs ginkgo if missing.
@@ -78,8 +79,11 @@ main() {
 
   echo ">>>> install critest-${CRITEST_VERSION} <<<<"
   critest::install
+  echo ">>>> install done <<<<"
 
-  command -v critest > /dev/null
+  #command -v critest > /dev/null
+  command -v critest
+  echo ">>>> command checked <<<<"
 }
 
 main "$@"
