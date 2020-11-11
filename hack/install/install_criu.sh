@@ -29,7 +29,7 @@ criu::ubuntu::install() {
 
   git clone https://github.com/protocolbuffers/protobuf
   cd protobuf/
-  ./autogen.sh && ./configure && make
+  ./autogen.sh && ./configure && make -j4
   cd ..
   git clone https://github.com/checkpoint-restore/criu.git "${tmpdir}/criu"
   cd "${tmpdir}/criu"
