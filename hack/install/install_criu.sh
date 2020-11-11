@@ -27,6 +27,10 @@ criu::ubuntu::install() {
   tag="v3.10"
   tmpdir="$(mktemp -d /tmp/criu-build-XXXXXX)"
 
+  git clone https://github.com/protocolbuffers/protobuf
+  cd protobuf/
+  ./autogen.sh && ./configure && make
+  cd ..
   git clone https://github.com/checkpoint-restore/criu.git "${tmpdir}/criu"
   cd "${tmpdir}/criu"
   git checkout "${tag}" -b "${tag}"
