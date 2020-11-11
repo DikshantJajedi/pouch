@@ -16,7 +16,8 @@ criu::ubuntu::install_dependencies() {
     python-protobuf \
     libnl-3-dev \
     libcap-dev \
-    asciidoc
+    asciidoc \ 
+    xmlto
 }
 
 # criu::ubuntu::install will install criu from source.
