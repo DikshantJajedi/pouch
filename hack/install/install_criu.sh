@@ -27,10 +27,10 @@ criu::ubuntu::install() {
   tag="v3.10"
   tmpdir="$(mktemp -d /tmp/criu-build-XXXXXX)"
 
-  git clone https://github.com/protocolbuffers/protobuf
-  cd protobuf/
-  ./autogen.sh && ./configure && make -j4
-  cd ..
+  #git clone https://github.com/protocolbuffers/protobuf
+  #cd protobuf/
+  #./autogen.sh && ./configure && make -j4
+  #cd ..
   git clone https://github.com/checkpoint-restore/criu.git "${tmpdir}/criu"
   cd "${tmpdir}/criu"
   git checkout "${tag}" -b "${tag}"
@@ -51,6 +51,8 @@ main() {
 
   os_dist="$(detect_os)"
   if [[ "${os_dist}" = "Ubuntu" ]]; then
+    criu::ubuntu::install_dependencies > /dev/null
+    echo ">>>> start to download criu from github repository <<<<"
     criu::ubuntu::install > /dev/null
   else
     echo "will support redhat soon"
