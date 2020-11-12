@@ -3,7 +3,7 @@
 set -euo pipefail
 
 CRITEST_BRANCH_DEFAULT=master
-
+ARCH=$(uname -m)
 # keep the first one only
 GOPATH="${GOPATH%%:*}"
 
@@ -48,7 +48,15 @@ critest::install() {
   echo ">>>> checkout <<<<"
   git checkout "${CRITEST_BRANCH_DEFAULT}"
   echo ">>>> make running <<<<"
-  make
+  if [[ "${ARCH}" == "aarch64" ]]; then
+    arch1="arm64"
+  else
+    arch1="amd64"
+  fi
+  wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-$(arch).tar.gz
+  tar -xvf critest
+  cp critest/ /usr/local/bin/critest
+  #make
   echo ">>>> make completed <<<<"
   cd -
   echo ">>>> DONEEEEEEEEEE <<<<"
