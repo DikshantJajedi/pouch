@@ -82,10 +82,10 @@ main() {
   echo ">>>> install done <<<<"
 
   #command -v critest > /dev/null
-  command --help
-  command -version critest
-  command -version critest
-  echo ">>>> command checked <<<<"
+  #command --help
+  #command -version critest
+  #command -version critest
+  #echo ">>>> command checked <<<<"
 }
 
 main "$@"
