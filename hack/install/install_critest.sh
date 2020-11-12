@@ -31,7 +31,7 @@ critest::check_version() {
 
 # critest::install downloads the package and build.
 critest::install() {
-  local workdir pkg CRITOOLS_REPO arch1
+  local workdir pkg CRITOOLS_REPO
 
   pkg="github.com/kubernetes-sigs/cri-tools"
   CRITOOLS_REPO="github.com/DikshantJajedi/cri-tools"
@@ -49,11 +49,11 @@ critest::install() {
   git checkout "${CRITEST_BRANCH_DEFAULT}"
   echo ">>>> make running <<<<"
   if [[ "${ARCH}" == "aarch64" ]]; then
-    arch1="arm64"
+    wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-amd64.tar.gz
   else
-    arch1="amd64"
+    wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-amd64.tar.gz
   fi
-  wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-$(arch1).tar.gz
+  #wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-$(arch1).tar.gz
   tar -xvf critest
   cp critest/ /usr/local/bin/critest
   #make
