@@ -31,7 +31,7 @@ critest::check_version() {
 
 # critest::install downloads the package and build.
 critest::install() {
-  local workdir pkg CRITOOLS_REPO
+  local workdir pkg CRITOOLS_REPO arch1
 
   pkg="github.com/kubernetes-sigs/cri-tools"
   CRITOOLS_REPO="github.com/DikshantJajedi/cri-tools"
