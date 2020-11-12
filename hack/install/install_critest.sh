@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-CRITEST_BRANCH_DEFAULT=v1.16.0
+CRITEST_BRANCH_DEFAULT=master
 ARCH=$(uname -m)
 # keep the first one only
 GOPATH="${GOPATH%%:*}"
@@ -34,7 +34,7 @@ critest::install() {
   local workdir pkg CRITOOLS_REPO
 
   pkg="github.com/kubernetes-sigs/cri-tools"
-  CRITOOLS_REPO="github.com/DikshantJajedi/cri-tools"
+  CRITOOLS_REPO="github.com/Abhisheknishant/cri-tools"
   workdir="${GOPATH}/src/${pkg}"
 
   if [ ! -d "${workdir}" ]; then
@@ -48,15 +48,15 @@ critest::install() {
   echo ">>>> checkout <<<<"
   git checkout "${CRITEST_BRANCH_DEFAULT}"
   echo ">>>> make running <<<<"
-  if [[ "${ARCH}" == "aarch64" ]]; then
-    wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-arm64.tar.gz
-  else
-    wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-amd64.tar.gz
-  fi
+  #if [[ "${ARCH}" == "aarch64" ]]; then
+  #  wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-arm64.tar.gz
+  #else
+  #  wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-amd64.tar.gz
+  #fi
   #wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-$(arch1).tar.gz
-  tar -xvf critest
-  cp critest /usr/local/bin/critest
-  #make
+  #tar -xvf critest
+  #cp critest /usr/local/bin/critest
+  make
   echo ">>>> make completed <<<<"
   cd -
   echo ">>>> DONEEEEEEEEEE <<<<"
