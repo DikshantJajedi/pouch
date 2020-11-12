@@ -55,7 +55,7 @@ critest::install() {
   fi
   #wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-$(arch1).tar.gz
   tar -xvf critest
-  cp critest/ /usr/local/bin/critest
+  cp critest /usr/local/bin/critest
   #make
   echo ">>>> make completed <<<<"
   cd -
