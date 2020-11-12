@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-CRITEST_BRANCH_DEFAULT=master
+CRITEST_BRANCH_DEFAULT=v1.19.0
 #ARCH=$(uname -m)
 # keep the first one only
 GOPATH="${GOPATH%%:*}"
