@@ -53,7 +53,7 @@ critest::install() {
   else
     arch1="amd64"
   fi
-  wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-$(arch).tar.gz
+  wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-$(arch1).tar.gz
   tar -xvf critest
   cp critest/ /usr/local/bin/critest
   #make
