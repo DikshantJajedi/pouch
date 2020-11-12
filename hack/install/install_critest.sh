@@ -49,7 +49,7 @@ critest::install() {
   git checkout "${CRITEST_BRANCH_DEFAULT}"
   echo ">>>> make running <<<<"
   if [[ "${ARCH}" == "aarch64" ]]; then
-    wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-amd64.tar.gz
+    wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-arm64.tar.gz
   else
     wget -O critest https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-amd64.tar.gz
   fi
