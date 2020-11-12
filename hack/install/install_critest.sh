@@ -78,7 +78,7 @@ main() {
 
   local has_installed
 
-  CRITEST_VERSION="1.19.0"
+  CRITEST_VERSION="1.0.0-beta.0"
   has_installed="$(critest::check_version)"
   if [[ "${has_installed}" = "true" ]]; then
     echo "critest-${CRITEST_VERSION} has been installed."
