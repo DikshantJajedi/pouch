@@ -182,6 +182,10 @@ func IsLinux() bool {
 	return runtime.GOOS == "linux"
 }
 
+//IsArch checks if the architecture is arm64.
+func IsArch() bool {
+	return runtime.GOARCH == "arm64"
+}
 // IsAliKernel checks if the kernel of test environment is AliKernel.
 func IsAliKernel() bool {
 	cmd := "uname -r | grep -i alios"
