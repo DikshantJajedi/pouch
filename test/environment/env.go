@@ -31,11 +31,18 @@ var (
 	// BusyboxTag the default tag used for busybox image
 	BusyboxTag = "1.28"
 
-	// BusyboxDigest the digest used for busybox image
-	BusyboxDigest = "sha256:141c253bc4c3fd0a201d32dc1f493bcf3fff003b6df416dea4f41046e0f37d47"
+	if runtime.GOARCH == "arm64" {
+		// BusyboxDigest the digest used for busybox image
+	        BusyboxDigest = "sha256:141c253bc4c3fd0a201d32dc1f493bcf3fff003b6df416dea4f41046e0f37d47"
+	        // BusyboxID the default ID for busybox image
+	        BusyboxID = "sha256:89a35e2ebb6b938201966889b5e8c85b931db6432c5643966116cd1c28bf45cd"
+	} else {
+		// BusyboxDigest the digest used for busybox image
+	        BusyboxDigest = "sha256:141c253bc4c3fd0a201d32dc1f493bcf3fff003b6df416dea4f41046e0f37d47"
+	        // BusyboxID the default ID for busybox image
+	        BusyboxID = "sha256:8c811b4aec35f259572d0f79207bc0678df4c736eeec50bc9fec37ed936a472a"
+	}
 
-	// BusyboxID the default ID for busybox image
-	BusyboxID = "sha256:8c811b4aec35f259572d0f79207bc0678df4c736eeec50bc9fec37ed936a472a"
 
 	// Busybox125Tag the 1.25 tag used for 1.25 busybox image
 	Busybox125Tag = "1.25"
