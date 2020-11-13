@@ -1,4 +1,4 @@
-dist: bionic
+#dist: bionic
 sudo: required
 
 language: go
@@ -113,32 +113,68 @@ jobs:
     - arch: amd64
       stage: test
       name: "Integration test 0"
+      install: skip
       script: ./travis_ci.sh integrationtest 4 0
     - arch: arm64
       stage: test
       name: "Integration test 0"
-      script: ./travis_ci.sh integrationtest 4 0
+      script:
+        - sudo apt-get install -y net-tools libbtrfs-dev
+        - sudo mkdir -p /etc/systemd/system/docker.service.d
+        - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
+        - service docker status
+        - sudo systemctl daemon-reload
+        - sudo systemctl restart docker
+        - service docker status
+        - ./travis_ci.sh integrationtest 4 0
     - arch: amd64
       stage: test
+      install: skip
       name: "Integration test 1"
       script: ./travis_ci.sh integrationtest 4 1
     - arch: arm64
       stage: test
       name: "Integration test 1"
-      script: ./travis_ci.sh integrationtest 4 1  
+      script:
+        - sudo apt-get install -y net-tools libbtrfs-dev
+        - sudo mkdir -p /etc/systemd/system/docker.service.d
+        - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
+        - service docker status
+        - sudo systemctl daemon-reload
+        - sudo systemctl restart docker
+        - service docker status
+        - ./travis_ci.sh integrationtest 4 1  
     - arch: amd64
       stage: test
       name: "Integration test 2"
+      install: skip
       script: ./travis_ci.sh integrationtest 4 2
     - arch: arm64
       stage: test
       name: "Integration test 2"
-      script: ./travis_ci.sh integrationtest 4 2  
+      script:
+        - sudo apt-get install -y net-tools libbtrfs-dev
+        - sudo mkdir -p /etc/systemd/system/docker.service.d
+        - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
+        - service docker status
+        - sudo systemctl daemon-reload
+        - sudo systemctl restart docker
+        - service docker status
+        - ./travis_ci.sh integrationtest 4 2  
     - arch: amd64
       stage: test
       name: "Integration test 3"
+      install: skip
       script: ./travis_ci.sh integrationtest 4 3
     - arch: arm64
       stage: test
       name: "Integration test 3"
-      script: ./travis_ci.sh integrationtest 4 3  
+      script:
+        - sudo apt-get install -y net-tools libbtrfs-dev
+        - sudo mkdir -p /etc/systemd/system/docker.service.d
+        - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
+        - service docker status
+        - sudo systemctl daemon-reload
+        - sudo systemctl restart docker
+        - service docker status
+        - ./travis_ci.sh integrationtest 4 3  
