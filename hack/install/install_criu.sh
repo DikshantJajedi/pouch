@@ -26,7 +26,7 @@ criu::ubuntu::install() {
   #apt-get install -y -q criu
   local tmpdir tag
 
-  tag="v3.15"
+  tag="v2.6"
   tmpdir="$(mktemp -d /tmp/criu-build-XXXXXX)"
   git clone https://github.com/checkpoint-restore/criu.git "${tmpdir}/criu"
   cd "${tmpdir}/criu"
