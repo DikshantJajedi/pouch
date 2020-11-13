@@ -111,14 +111,35 @@ jobs:
         - ./travis_ci.sh nodee2etest
 
     - arch: amd64
+      dist: focal
       stage: test
       name: "Integration test 0"
       install: skip
-      script: ./travis_ci.sh integrationtest 4 0
-    - arch: arm64
+      script:
+        - sudo apt-get install -y net-tools libbtrfs-dev
+        - sudo mkdir -p /etc/systemd/system/docker.service.d
+        - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
+        - service docker status
+        - sudo systemctl daemon-reload
+        - sudo systemctl restart docker
+        - service docker status
+        - ./travis_ci.sh integrationtest 4 0
+    - arch: arm64-graviton
+      dist: focal
+      virt: vm
+      group: edge
       stage: test
       name: "Integration test 0"
-      script: ./travis_ci.sh integrationtest 4 0
+      install: skip
+      script:
+        - sudo apt-get install -y net-tools libbtrfs-dev
+        - sudo mkdir -p /etc/systemd/system/docker.service.d
+        - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
+        - service docker status
+        - sudo systemctl daemon-reload
+        - sudo systemctl restart docker
+        - service docker status
+        - ./travis_ci.sh integrationtest 4 0
     - arch: amd64
       stage: test
       install: skip
