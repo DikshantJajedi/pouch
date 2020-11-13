@@ -6,6 +6,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 source "./check.sh"
 
 criu::ubuntu::install_dependencies() {
+  apt-get update
   apt-get install -y -q \
     build-essential \
     libnet1-dev \
