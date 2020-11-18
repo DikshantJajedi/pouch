@@ -184,7 +184,7 @@ func IsLinux() bool {
 
 //IsArch checks if the architecture is arm64.
 func IsArch() bool {
-	return runtime.GOARCH == "amd64"
+	return runtime.GOARCH == "arm64"
 }
 // IsAliKernel checks if the kernel of test environment is AliKernel.
 func IsAliKernel() bool {
