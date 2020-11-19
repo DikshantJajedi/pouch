@@ -24,7 +24,7 @@ func init() {
 
 // SetUpTest does common setup in the beginning of each test.
 func (suite *APIContainerListSuite) SetUpTest(c *check.C) {
-	SkipIfTrue(c, environment.IsLinux)
+	SkipIfFalse(c, environment.IsLinux)
 
 	environment.PruneAllContainers(apiClient)
 	PullImage(c, busyboxImage125)
