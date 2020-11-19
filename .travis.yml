@@ -201,21 +201,20 @@ jobs:
         - service docker status
         - ./travis_ci.sh integrationtest 4 2  
     - arch: amd64
-      dist: focal
+      dist: xenial
       stage: test
       name: "Integration test 3"
       install: skip
       script:
-        - sudo apt-get install -y net-tools libbtrfs-dev
-        - sudo mkdir -p /etc/systemd/system/docker.service.d
-        - sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
-        - service docker status
-        - sudo systemctl daemon-reload
-        - sudo systemctl restart docker
-        - service docker status
+        #- sudo apt-get install -y net-tools libbtrfs-dev
+        #- sudo mkdir -p /etc/systemd/system/docker.service.d
+        #- sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf
+        #- service docker status
+        #- sudo systemctl daemon-reload
+        #- sudo systemctl restart docker
+        #- service docker status
         - ./travis_ci.sh integrationtest 4 3
-    - arch: arm64
-      arch: arm64-graviton
+    - arch: arm64-graviton
       dist: focal
       virt: vm
       group: edge
