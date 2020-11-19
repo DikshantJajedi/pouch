@@ -75,7 +75,7 @@ func (suite *PouchWaitSuite) TestWaitBlockedExitZero(c *check.C) {
 func (suite *PouchWaitSuite) TestWaitNonBlockedExitRandom(c *check.C) {
 	name := "TestWaitNonBlockedExitRandom"
 	fmt.Printf("IMAGE NAME")
-	fmt.Println("%v\n",busyboxImage)
+	fmt.Printf("%v\n",busyboxImage)
 	command.PouchRun("run", "-d", "--name", name, busyboxImage, "sh", "-c", "exit 99").Assert(c, icmd.Success)
 	defer DelContainerForceMultyTime(c, name)
 
