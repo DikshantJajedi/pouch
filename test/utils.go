@@ -115,8 +115,8 @@ func IsTLSExist() bool {
 func inspectFilter(name, filter string) (string, error) {
 	format := fmt.Sprintf("{{%s}}", filter)
 	result := command.PouchRun("inspect", "-f", format, name)
-	fmt.Println("Result")
-	fmt.Println("%v\n", result)
+	fmt.Printf("Result")
+	fmt.Printf("%v\n", result)
 	if result.Error != nil || result.ExitCode != 0 {
 		return "", fmt.Errorf("failed to inspect container %s via filter %s: %s", name, filter, result.Combined())
 	}
