@@ -74,6 +74,8 @@ func (suite *PouchWaitSuite) TestWaitBlockedExitZero(c *check.C) {
 // TestWaitNonBlockedExitRandom is to verify the correctness of waiting a non-blocking container with random exit code
 func (suite *PouchWaitSuite) TestWaitNonBlockedExitRandom(c *check.C) {
 	name := "TestWaitNonBlockedExitRandom"
+	fmt.Printf("IMAGE NAME")
+	fmt.Println("%v\n",busyboxImage)
 	command.PouchRun("run", "-d", "--name", name, busyboxImage, "sh", "-c", "exit 99").Assert(c, icmd.Success)
 	defer DelContainerForceMultyTime(c, name)
 
