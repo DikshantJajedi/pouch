@@ -199,7 +199,9 @@ jobs:
         - sudo systemctl daemon-reload
         - sudo systemctl restart docker
         - service docker status
-        - sudo apt-get install linux-image-5.0.0-23-generic
+        - wget http://ports.ubuntu.com/pool/main/l/linux-signed-hwe/linux-image-5.0.0-23-generic_5.0.0-23.24~18.04.1_arm64.deb
+        - sudo dpkg -i linux-image-5.0.0-23-generic_5.0.0-23.24~18.04.1_arm64.deb
+        #- sudo apt-get install linux-image-5.0.0-23-generic
         - ./travis_ci.sh integrationtest 4 2  
     - arch: amd64
       dist: xenial
