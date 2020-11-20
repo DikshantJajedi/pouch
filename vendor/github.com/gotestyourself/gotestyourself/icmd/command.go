@@ -198,6 +198,8 @@ func RunCmd(cmd Cmd, cmdOperators ...CmdOp) *Result {
 		op(&cmd)
 	}
 	result := StartCmd(cmd)
+	fmt.Printf("Result\n")
+	fmt.Printf("%v\n",result)
 	if result.Error != nil {
 		return result
 	}
