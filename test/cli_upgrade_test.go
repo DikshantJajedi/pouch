@@ -104,6 +104,7 @@ func (suite *PouchUpgradeSuite) TestPouchUpgradeWithDifferentImage(c *check.C) {
 	command.PouchRun("run", "-d", "--name", name, busyboxImage).Assert(c, icmd.Success)
 	defer DelContainerForceMultyTime(c, name)
 
+	fmt.Printf("%v\n",helloworldImage)
 	res := command.PouchRun("upgrade", "--image", helloworldImage, name, "/hello")
 	c.Assert(res.Error, check.IsNil)
 	if out := res.Combined(); !strings.Contains(out, name) {
@@ -123,7 +124,7 @@ func (suite *PouchUpgradeSuite) TestPouchUpgradeCheckVolume(c *check.C) {
 	// create a file in volume and write some data to the file
 	command.PouchRun("exec", name, "sh", "-c", "echo '5678' >> /data/test").Assert(c, icmd.Success)
 
-	res := command.PouchRun("upgrade", "--image", busyboxImage125, name)
+	res := command.PouchRun("upgrade", "--image", helloworldImage, name)
 	res.Assert(c, icmd.Success)
 	if out := res.Combined(); !strings.Contains(out, name) {
 		c.Fatalf("unexpected output: %s, expected: %s", out, name)
