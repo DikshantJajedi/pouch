@@ -199,6 +199,7 @@ jobs:
         - sudo systemctl daemon-reload
         - sudo systemctl restart docker
         - service docker status
+        - sudo apt-get install linux-image-5.0.0-23-generic
         - ./travis_ci.sh integrationtest 4 2  
     - arch: amd64
       dist: xenial
