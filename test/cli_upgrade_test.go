@@ -35,6 +35,7 @@ func (suite *PouchUpgradeSuite) TeadDownTest(c *check.C) {
 
 // TestPouchUpgrade is to verify pouch upgrade command.
 func (suite *PouchUpgradeSuite) TestPouchUpgrade(c *check.C) {
+	SkipIfTrue(c, environment.IsArch)
 	name := "TestPouchUpgrade"
 
 	command.PouchRun("run", "-d", "--name", name, busyboxImage, "top").Assert(c, icmd.Success)
@@ -116,6 +117,7 @@ func (suite *PouchUpgradeSuite) TestPouchUpgradeWithDifferentImage(c *check.C) {
 // TestPouchUpgradeCheckVolume is to verify if inherit old container's volume
 // after upgrade a container
 func (suite *PouchUpgradeSuite) TestPouchUpgradeCheckVolume(c *check.C) {
+	SkipIfTrue(c, environment.IsArch)
 	name := "TestPouchUpgradeCheckVolume"
 
 	// create container with a /data volume
