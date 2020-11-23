@@ -256,7 +256,9 @@ func WaitOnCmd(timeout time.Duration, result *Result) *Result {
 	fmt.Printf("Inside Wait")
 	if timeout == time.Duration(0) {
 		fmt.Printf("Inside another if")
+		fmt.Printf("%v\n",result.Cmd.Wait())
 		result.setExitError(result.Cmd.Wait())
+		fmt.Printf("%v\n",result)
 		return result
 	}
 
