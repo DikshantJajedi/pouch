@@ -206,7 +206,7 @@ jobs:
         #- sudo apt-get install linux-image-5.0.0-23-generic
         - ./travis_ci.sh integrationtest 4 2  
     - arch: amd64
-      dist: xenial
+      dist: focal
       stage: test
       name: "Integration test 3"
       install: skip
