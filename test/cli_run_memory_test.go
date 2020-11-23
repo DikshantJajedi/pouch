@@ -309,8 +309,6 @@ func (suite *PouchRunMemorySuite) TestRunWithDefaultShm(c *check.C) {
 
 	res = command.PouchRun("exec", cname, "ls", "-l", "/dev/shm")
 	res.Assert(c, icmd.Success)
-	res = command.PouchRun("run", cname, "ls", "-l", "/dev/shm")
-	res.Assert(c, icmd.Success)
 	res = command.PouchRun("exec", cname, "df", "-h", "/dev/shm")
 	res.Assert(c, icmd.Success)
 	res = command.PouchRun("exec", cname, "df", "-k", "/dev/shm")
