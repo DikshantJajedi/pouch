@@ -203,6 +203,8 @@ func RunCmd(cmd Cmd, cmdOperators ...CmdOp) *Result {
 	if result.Error != nil {
 		return result
 	}
+	fmt.Printf("NEW RESULT")
+	fmt.Printf("%v\n", WaitOnCmd(cmd.Timeout, result))
 	return WaitOnCmd(cmd.Timeout, result)
 }
 
