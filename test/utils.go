@@ -120,6 +120,8 @@ func inspectFilter(name, filter string) (string, error) {
 	if result.Error != nil || result.ExitCode != 0 {
 		return "", fmt.Errorf("failed to inspect container %s via filter %s: %s", name, filter, result.Combined())
 	}
+	fmt.Printf("inspectFilter")
+	fmt.Printf("%v\n", strings.TrimSpace(result.Combined()))
 	return strings.TrimSpace(result.Combined()), nil
 }
 
