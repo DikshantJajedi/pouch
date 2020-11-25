@@ -205,7 +205,8 @@ func RunCmd(cmd Cmd, cmdOperators ...CmdOp) *Result {
 		fmt.Printf("Inseide If")
 		return result
 	}
-	return WaitOnCmd(cmd.Timeout, result)
+	return result
+	//return WaitOnCmd(cmd.Timeout, result)
 }
 
 // RunCommand runs a command with default options, and returns a result
