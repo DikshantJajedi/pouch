@@ -205,8 +205,7 @@ func RunCmd(cmd Cmd, cmdOperators ...CmdOp) *Result {
 		fmt.Printf("Inseide If")
 		return result
 	}
-	return result
-	//return WaitOnCmd(cmd.Timeout, result)
+	return WaitOnCmd(cmd.Timeout, result)
 }
 
 // RunCommand runs a command with default options, and returns a result
@@ -262,6 +261,7 @@ func WaitOnCmd(timeout time.Duration, result *Result) *Result {
 		return result
 	}
 
+	fmt.Printf("Insideeeeeeee wait")
 	done := make(chan error, 1)
 	// Wait for command to exit in a goroutine
 	go func() {
@@ -271,11 +271,14 @@ func WaitOnCmd(timeout time.Duration, result *Result) *Result {
 	select {
 	case <-time.After(timeout):
 		killErr := result.Cmd.Process.Kill()
+		fmt.Printf("Insideeeeeeee kill")
 		if killErr != nil {
+			fmt.Printf("Insideeeeeeee kill if")
 			fmt.Printf("failed to kill (pid=%d): %v\n", result.Cmd.Process.Pid, killErr)
 		}
 		result.Timeout = true
 	case err := <-done:
+		fmt.Printf("Insideeeeeeee done")
 		result.setExitError(err)
 	}
 	fmt.Printf("NEW RESULT")
